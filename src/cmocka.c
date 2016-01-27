@@ -2712,11 +2712,12 @@ int _cmocka_run_group_tests(const char *group_name,
             (tests[i].test_func != NULL
              || tests[i].setup_func != NULL
              || tests[i].teardown_func != NULL)) {
-            cm_tests[i] = (struct CMUnitTestState) {
-                .test = &tests[i],
-                .status = CM_TEST_NOT_STARTED,
-                .state = NULL,
-            };
+            cm_tests[i].check_point = NULL;
+            cm_tests[i].test = &tests[i];
+            cm_tests[i].state = NULL;
+            cm_tests[i].error_message = NULL;
+            cm_tests[i].status = CM_TEST_NOT_STARTED;
+            cm_tests[i].runtime = 0;
             total_tests++;
         }
     }
