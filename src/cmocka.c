@@ -2114,7 +2114,7 @@ static void cmprintf_group_finish_xml(const char *group_name,
     env = getenv("CMOCKA_XML_FILE");
     if (env != NULL) {
         char buf[1024];
-        snprintf(buf, sizeof(buf), "%s", env);
+        snprintf(buf, sizeof(buf), "%s_%s.xml", env, group_name);
 
         fp = fopen(buf, "r");
         if (fp == NULL) {
